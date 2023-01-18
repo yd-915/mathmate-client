@@ -1,13 +1,16 @@
-import { create } from "zustand";
-import { Question } from "./types";
+import { StateCreator } from "zustand";
 
-type Store = {
+interface Question {
+  text: string;
+}
+
+export interface QuestionsSlice {
   questions: Question[];
   newQuestion: string;
   addQuestion: () => void;
-};
+}
 
-const useStore = create<Store>((set) => ({
+export const createQuestionsSlice: StateCreator<QuestionsSlice> = (set) => ({
   questions: [],
   newQuestion: "zustand is working",
   addQuestion() {
@@ -15,6 +18,4 @@ const useStore = create<Store>((set) => ({
       ...state,
     }));
   },
-}));
-
-export default useStore;
+});
