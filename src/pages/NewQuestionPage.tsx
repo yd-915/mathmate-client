@@ -4,7 +4,7 @@ import { FormEvent, useState } from "react";
 
 function NewQuestion() {
   const [title, setTitle] = useState("");
-  const [tags, setTags] = useState<MuiChipsInputChip[]>([]);
+  const [tags, setTags] = useState<MuiChipsInputChip[]>(["aaaaa","bbbbbb"]);
   const [text, setText] = useState("");
 
   const handleChange = (newTags: MuiChipsInputChip[]) => {
@@ -30,6 +30,7 @@ function NewQuestion() {
           sx={{ mb: 2 }}
         />
         <MuiChipsInput
+        disabled
           value={tags}
           onChange={handleChange}
           fullWidth
