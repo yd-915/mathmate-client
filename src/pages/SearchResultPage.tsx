@@ -42,8 +42,6 @@ function SearchResult() {
  
   return (
     <>
-      <Navbar />
-
       <Container sx={{ my: 2, justifyContent: "flex-start" }}>
         <SearchInput />
       </Container>
