@@ -39,12 +39,10 @@ const questions: Question[] = [
 function SearchResult() {
 
   const [tags, setTags] = useState<MuiChipsInputChip[]>(["aaaaa","bbbbbb"]);
-  const [text, setText] = useState("");
 
   const handleChange = (newTags: MuiChipsInputChip[]) => {
     setTags(newTags);
   };
-
  
   return (
     <>
