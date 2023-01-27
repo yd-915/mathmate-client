@@ -1,10 +1,6 @@
 import {
   Card,
   Container,
-  Divider,
-  IconButton,
-  InputBase,
-  Paper,
   Stack,
 } from "@mui/material";
 import Navbar from "../components/navbar";
