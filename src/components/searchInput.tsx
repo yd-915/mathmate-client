@@ -1,7 +1,11 @@
 import { Paper, InputBase, IconButton } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-function SearchInput({ text }: { text: string }) {
+interface SearchInputProps {
+  text: string;
+}
+
+function SearchInput({ text }: SearchInputProps) {
   return (
     <Paper
       component="form"

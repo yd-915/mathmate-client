@@ -1,13 +1,20 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Container, Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const homeClicked = () => {
+    navigate("/");
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -21,25 +28,40 @@ function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Mathmate
-          </Typography>
+          <Container>
+            <Button
+              variant="text"
+              onClick={homeClicked}
+              sx={{ color: "white" }}
+            >
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Mathmate
+              </Typography>
+            </Button>
+          </Container>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
-            onClick={()=>{ window.open('https://github.com/Mathmate-il', '_blank', 'noreferrer');}}
-          
+            onClick={() => {
+              window.open(
+                "https://github.com/Mathmate-il",
+                "_blank",
+                "noreferrer"
+              );
+            }}
           >
             <GitHubIcon />
           </IconButton>
-          <Button color="inherit" variant="outlined">Sign In</Button>
+          <Button color="inherit" variant="outlined">
+            Sign In
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
