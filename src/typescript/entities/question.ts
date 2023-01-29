@@ -5,6 +5,7 @@ export interface Question {
     question: string;
     rate: number;
     ownerId: string;
+    tags: string[];
 }
 
 export const initialQuestionObject: Question = {
@@ -14,4 +15,5 @@ export const initialQuestionObject: Question = {
     question: "",
     rate: 0,
     ownerId: "",
+    tags:[],
 };

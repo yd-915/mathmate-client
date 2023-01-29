@@ -1,18 +1,19 @@
 import { StateCreator } from "zustand";
-import { Question } from "../typescript";
+import { Question, initialQuestionObject } from "../typescript";
 
 export interface QuestionsSlice {
-    questions: Question[];
-    newQuestion: string;
-    addQuestion: () => void;
+  questions: Question[];
+  selectedQuestion: Question;
+  addQuestion: (question: Question) => void;
 }
 
 export const createQuestionsSlice: StateCreator<QuestionsSlice> = (set) => ({
-    questions: [],
-    newQuestion: "zustand is working",
-    addQuestion() {
-        set((state) => ({
-            ...state,
-        }));
-    },
+  questions: [initialQuestionObject],
+  addQuestion(question: Question) {
+    set((state: QuestionsSlice) => ({
+      ...state,
+      selectedQuestion: question,
+      questions: [...state.questions, question],
+    }));
+  },
 });
