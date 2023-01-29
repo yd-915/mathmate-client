@@ -1,20 +1,40 @@
-import { TextField, Button, Chip } from "@mui/material";
-import { MuiChipsInput, MuiChipsInputChip } from "mui-chips-input";
+import { TextField, Button } from "@mui/material";
+import { MuiChipsInput } from "mui-chips-input";
 import { FormEvent, useState } from "react";
+import useStore, { StoreState } from "../store/store";
+import { initialQuestionObject, Question } from "../typescript";
+import { useNavigate } from "react-router-dom";
 
-function NewQuestion() {
-  const [title, setTitle] = useState("");
-  const [tags, setTags] = useState<MuiChipsInputChip[]>(["aaaaa","bbbbbb"]);
-  const [text, setText] = useState("");
+const NewQuestion = () => {
+  const navigate = useNavigate();
 
-  const handleChange = (newTags: MuiChipsInputChip[]) => {
-    setTags(newTags);
+  const addQuestion = useStore((state: StoreState) => state.addQuestion);
+
+  const [question, setQuestion] = useState<Question>({
+    id: crypto.randomUUID(),
+    createdAt: new Date(),
+    title: "",
+    question: "",
+    rate: 0,
+    ownerId: "",
+    tags: [],
+  });
+
+  const handleChipsChange = (newTags: string[]) => {
+    setQuestion((prevState) => ({ ...prevState, tags: newTags }));
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // send a POST request to the server with the form data
-    // or, handle the form submission locally
+    addQuestion(question);
+    navigate("/searchResult");
+  };
+
+  const handleChange = (e: any) => {
+    setQuestion((prevState) => ({
+      ...prevState,
+      [e.target.id]: e.target.value,
+    }));
   };
 
   return (
@@ -22,24 +42,25 @@ function NewQuestion() {
       <h1>New Question</h1>
       <form onSubmit={handleSubmit}>
         <TextField
+          id="title"
           label="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={question.title}
+          onChange={handleChange}
           fullWidth
           required
           sx={{ mb: 2 }}
         />
         <MuiChipsInput
-        disabled
-          value={tags}
-          onChange={handleChange}
+          value={question.tags}
+          onChange={handleChipsChange}
           fullWidth
           sx={{ mb: 2 }}
         />
         <TextField
-          label="Text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          id="question"
+          label="question"
+          value={question.question}
+          onChange={handleChange}
           fullWidth
           multiline
           required
@@ -51,6 +72,6 @@ function NewQuestion() {
       </form>
     </>
   );
-}
+};
 
 export default NewQuestion;
