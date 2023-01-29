@@ -11,13 +11,8 @@ const NewQuestion = () => {
   const addQuestion = useStore((state: StoreState) => state.addQuestion);
 
   const [question, setQuestion] = useState<Question>({
+    ...initialQuestionObject,
     id: crypto.randomUUID(),
-    createdAt: new Date(),
-    title: "",
-    question: "",
-    rate: 0,
-    ownerId: "",
-    tags: [],
   });
 
   const handleChipsChange = (newTags: string[]) => {
