@@ -12,7 +12,7 @@ async function getMe() {
 function GoogleAuth() {
   return (
     <>
-      <GoogleOAuthProvider clientId="753616768076-9gck0q64mgij24rtjefh01aoitl33gqq.apps.googleusercontent.com">
+      <GoogleOAuthProvider clientId={import.meta.env.GOOGLE_CLIENT_ID}>
         <GoogleLogin
           onSuccess={async (credentialResponse) => {
             console.log(credentialResponse);
