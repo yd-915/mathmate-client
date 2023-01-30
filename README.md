@@ -55,23 +55,13 @@
 
 ### Clone & Install <a name="clone"></a>
 
--   Make sure you have node v16.13.1 and npm 8.1.2 (Or above)
 -   Fork the repo to your github  
-    `git clone https://github.com/Mathmate-il/Mathmate-server.git`
-    `npm install`
+    `git clone https://github.com/Mathmate-il/Mathmate-client.git`
+    `yarn` or `npm install` 
 
 ---
 
 ### Setup <a name="setup"></a>
-
--   Install postgreSQL **v15** with **pgadmin4** --- **Make sure you remember the password !**
--   Create a database in your pgadmin4 ->[A short youtube tutorial](https://www.youtube.com/watch?v=VHkY2QqW2iE&t=5s)
--   Download vsCode Prisma extension here [Link](https://marketplace.visualstudio.com/items?itemName=Prisma.prisma)
--   Create a user in OAuth2 google and create a connection -> [How to set up google auth](https://www.youtube.com/watch?v=3dLLVjmH9Nw&list=PLHhHN29St7TV5thp8GI9sRdrm2EZc46wC&index=4)
--   Update the .env with your credentials and DATABASE_URL, look at `src/auth/auth.service` for the names.
--   Run `prisma migrate dev` this will migrate the Prisma schemas into you local DB.
-
----
 
 ### Workflow <a name="workflow"></a>
 
@@ -101,8 +91,8 @@
 
 ## Our contributors
 
-<a href="https://github.com/Mathmate-il/Mathmate-server/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Mathmate-il/Mathmate-server" />
+<a href="https://github.com/Mathmate-il/Mathmate-client/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Mathmate-il/Mathmate-client" />
 </a>
 
 Made with [contrib.rocks](https://contrib.rocks).
