@@ -1,11 +1,11 @@
-import { TextField, Button } from "@mui/material";
-import { MuiChipsInput } from "mui-chips-input";
-import { FormEvent, useState } from "react";
-import useStore, { StoreState } from "../store/store";
-import { initialQuestionObject, Question } from "../typescript";
-import { useNavigate } from "react-router-dom";
+import { TextField, Button } from '@mui/material';
+import { MuiChipsInput } from 'mui-chips-input';
+import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import useStore, { StoreState } from '../store/store';
+import { initialQuestionObject, Question } from '../typescript';
 
-const NewQuestion = () => {
+function NewQuestion() {
   const navigate = useNavigate();
 
   const addQuestion = useStore((state: StoreState) => state.addQuestion);
@@ -22,7 +22,7 @@ const NewQuestion = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     addQuestion(question);
-    navigate("/searchResult");
+    navigate('/searchResult');
   };
 
   const handleChange = (e: any) => {
@@ -67,6 +67,6 @@ const NewQuestion = () => {
       </form>
     </>
   );
-};
+}
 
 export default NewQuestion;

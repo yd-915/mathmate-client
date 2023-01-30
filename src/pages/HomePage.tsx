@@ -1,6 +1,6 @@
-import useStore, { StoreState } from "../store/store";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router";
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router';
+import useStore, { StoreState } from '../store/store';
 
 function Home() {
   const isLoggedIn = useStore((state: StoreState) => state.isLoggedIn);
@@ -15,7 +15,7 @@ function Home() {
           sx={{ mb: 2 }}
           variant="contained"
           onClick={() => {
-            navigate("/newQuestion");
+            navigate('/newQuestion');
           }}
         >
           Ask your mate a math question
@@ -24,7 +24,7 @@ function Home() {
       <Button
         variant="contained"
         onClick={() => {
-          navigate("/searchResult");
+          navigate('/searchResult');
         }}
       >
         Search

@@ -3,12 +3,13 @@ import { Question, initialQuestionObject } from "../typescript";
 
 export interface QuestionsSlice {
   questions: Question[];
-  selectedQuestion: Question;
+  selectedQuestion?: Question;
   addQuestion: (question: Question) => void;
 }
 
 export const createQuestionsSlice: StateCreator<QuestionsSlice> = (set) => ({
   questions: [initialQuestionObject],
+  selectedQuestion: undefined,
   addQuestion(question: Question) {
     set((state: QuestionsSlice) => ({
       ...state,
