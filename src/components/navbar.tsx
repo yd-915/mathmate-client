@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import MainMenu from './mainMenu'
 
-function Navbar () {
+function Navbar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
   const openMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -67,7 +67,7 @@ function Navbar () {
               window.open(
                 'https://github.com/Mathmate-il',
                 '_blank',
-                'noreferrer'
+                'noreferrer',
               )
             }}
           >
