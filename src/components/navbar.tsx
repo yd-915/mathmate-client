@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import MenuIcon from '@mui/icons-material/Menu'
 import { Container, Typography } from '@mui/material'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import MainMenu from './mainMenu'
 

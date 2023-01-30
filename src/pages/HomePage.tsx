@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import useStore, { StoreState } from '../store/store';
 
 function Home() {
