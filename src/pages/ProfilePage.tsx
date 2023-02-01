@@ -1,8 +1,8 @@
-import { Stack, Avatar, Button } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
-import useStore, { StoreState } from "../store/store";
-import { User } from "../typescript";
+import { Stack, Avatar, Button } from '@mui/material';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LogoutIcon from '@mui/icons-material/Logout';
+import useStore, { StoreState } from '../store/store';
+import { User } from '../typescript';
 
 function Profile() {
   const currentUser: User = useStore((state: StoreState) => state.currentUser);

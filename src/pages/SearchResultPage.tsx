@@ -1,26 +1,26 @@
-import { Card, Container, Stack } from "@mui/material";
-import { Question } from "../typescript";
-import SearchInput from "../components/searchInput";
-import { MuiChipsInput } from "mui-chips-input";
-import useStore, { StoreState } from "../store/store";
+import { Card, Container, Stack } from '@mui/material';
+import { MuiChipsInput } from 'mui-chips-input';
+import { Question } from '../typescript';
+import SearchInput from '../components/searchInput';
+import useStore, { StoreState } from '../store/store';
 
 function SearchResult() {
   const selectedQuestion = useStore(
-    (state: StoreState) => state.selectedQuestion
+    (state: StoreState) => state.selectedQuestion,
   );
 
   const questions: Question[] = useStore((state: StoreState) => state.questions);
 
-  const handleChipsChange = (newTags: string[]) => {};
+  const handleChipsChange = () => {};
 
   return (
     <>
-      <Container sx={{ my: 2, justifyContent: "flex-start" }}>
+      <Container sx={{ my: 2, justifyContent: 'flex-start' }}>
         <SearchInput text={selectedQuestion?.question} />
       </Container>
 
       <MuiChipsInput
-        value={selectedQuestion.tags}
+        value={selectedQuestion?.tags}
         onChange={handleChipsChange}
         fullWidth
         sx={{ mb: 2 }}

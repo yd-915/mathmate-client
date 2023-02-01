@@ -1,6 +1,8 @@
-import { MenuItem, ListItemIcon, ListItemText, Menu } from "@mui/material";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import { useNavigate } from "react-router";
+import {
+  MenuItem, ListItemIcon, ListItemText, Menu,
+} from '@mui/material';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { useNavigate } from 'react-router-dom';
 
 interface MainMenuProps {
   anchorEl: any;
@@ -9,7 +11,6 @@ interface MainMenuProps {
 }
 
 function MainMenu({ anchorEl, handleClose, open }: MainMenuProps) {
-
   const navigate = useNavigate();
 
   const openProfile = () => {
@@ -24,7 +25,7 @@ function MainMenu({ anchorEl, handleClose, open }: MainMenuProps) {
       open={open}
       onClose={handleClose}
       MenuListProps={{
-        "aria-labelledby": "basic-button",
+        'aria-labelledby': 'basic-button',
       }}
     >
       <MenuItem onClick={openProfile}>
