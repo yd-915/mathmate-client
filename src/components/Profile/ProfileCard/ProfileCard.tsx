@@ -3,7 +3,7 @@ import mockProfilePic from '@/assets/mockProfilePic.jpg';
 import EditIcon from '@/assets/edit.svg';
 import useStore, { StoreState } from '@/store/store';
 import User from '@/typescript/entities/User';
-import RoundedImage from '../../RoundedImage';
+import RoundedImage from '@/components/RoundedImage';
 import './ProfileCard.scss';
 import '@/styles/main.scss';
 
@@ -18,7 +18,7 @@ function ProfileCard() {
           <span className="heading-5">{currentUser.name}</span>
           <img src={EditIcon} className="icon" alt="github" />
         </div>
-        <span className="paragraph">{currentUser.email}</span>
+        <span className="p1">{currentUser.email}</span>
         <button
           className="btn-outlined"
           type="button"
