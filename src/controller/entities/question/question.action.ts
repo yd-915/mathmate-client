@@ -1,23 +1,54 @@
-import { useQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import Question from '../../../model/entities/Question';
+import Tag from '../../../model/entities/Tag';
 import mainService from '../../Api/mainService';
-import useStore, { StoreState } from '../../store';
+import useStore from '../../store';
 
-const useQuestions = () => {
-  const store: StoreState = useStore((state: StoreState) => state);
+export function useGetAllQuestionsQuery() {
+  const store = useStore((state) => state);
 
-  const getAllQuestionQuery = useQuery({
+  return useQuery({
     queryKey: ['questions'],
-    queryFn: () => mainService.getAllQuestions(),
+    queryFn: mainService.getAllQuestions,
+    onSuccess: (data) => {
+      store.setQuestions(data);
+    },
   });
+}
 
-  useEffect(() => {
-    if (getAllQuestionQuery.isSuccess) {
-      store.setQuestions(getAllQuestionQuery.data);
-    }
-  }, [getAllQuestionQuery.isSuccess, getAllQuestionQuery.data]);
+export function useGetAllQuestionsByTagsQuery(tags: Tag[]) {
+  const store = useStore((state) => state);
 
-  return [getAllQuestionQuery];
-};
+  return useQuery({
+    queryKey: ['questions', tags],
+    queryFn: () => mainService.getAllQuestionsByTags(tags),
+    onSuccess: (data) => {
+      store.setQuestions(data);
+    },
+  });
+}
 
-export default useQuestions;
+export function useGetAllQuestionsByOwnerQuery(ownerID: string) {
+  const store = useStore((state) => state);
+
+  return useQuery({
+    queryKey: ['questions', ownerID],
+    queryFn: () => mainService.getAllQuestionsByOwner(ownerID),
+    onSuccess: (data) => {
+      store.setQuestions(data);
+    },
+  });
+}
+
+export function useCreateQuestionMutation() {
+  const store = useStore((state) => state);
+
+  return useMutation(
+    (question: Question) => mainService.createQuestion(question),
+    {
+      onSuccess: (data) => {
+        store.addQuestion(data);
+      },
+    },
+  );
+}

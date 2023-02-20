@@ -1,4 +1,6 @@
+import env from '../../config/env';
 import Question from '../../model/entities/Question';
+import Tag from '../../model/entities/Tag';
 import User from '../../model/entities/User';
 import Api from './Abstract.api';
 import { Method, StatusCode } from './types';
@@ -8,7 +10,7 @@ class MainService extends Api {
     super(baseUrl, headers);
   }
 
-  public async getJwtFromGoogleClientCredentials(googleCredentials: string) {
+  getJwtFromGoogleClientCredentials = async (googleCredentials: string) => {
     try {
       const response = await this.axiosRequest(Method.POST, '/google/getJwt', {
         googleCredentials,
@@ -20,67 +22,43 @@ class MainService extends Api {
     } catch (error) {
       return await Promise.reject(error);
     }
-  }
+  };
 
-  public async getAllQuestions() {
-    try {
-      const response = await this.axiosRequest(Method.GET, '/question/all');
-      if (response.status !== StatusCode.OK) {
-        return await Promise.reject(response.data);
-      }
-      return response.data;
-    } catch (error) {
-      return await Promise.reject(error);
-    }
-  }
+  getAllQuestions = async () => {
+    const response = await this.axiosRequest(Method.GET, '/question/all');
+    return response.data;
+  };
 
-  public async createQuestion(question: Question) {
-    try {
-      const response = await this.axiosRequest(
-        Method.POST,
-        '/question/create',
-        question,
-      );
-      if (response.status !== StatusCode.OK) {
-        return await Promise.reject(response.data);
-      }
-      return response.data;
-    } catch (error) {
-      return await Promise.reject(error);
-    }
-  }
+  createQuestion = async (question: Question) => {
+    const response = await this.axiosRequest(
+      Method.POST,
+      '/question/create',
+      question,
+    );
 
-  public async getAllQuestionsByTags() {
-    try {
-      const response = await this.axiosRequest(
-        Method.GET,
-        '/question/all/filterBy/tags',
-      );
-      if (response.status !== StatusCode.OK) {
-        return await Promise.reject(response.data);
-      }
-      return response.data;
-    } catch (error) {
-      return await Promise.reject(error);
-    }
-  }
+    return response.data;
+  };
 
-  public async getAllQuestionsByOwner() {
-    try {
-      const response = await this.axiosRequest(
-        Method.GET,
-        '/question/all/filterBy/owner',
-      );
-      if (response.status !== StatusCode.OK) {
-        return await Promise.reject(response.data);
-      }
-      return response.data;
-    } catch (error) {
-      return await Promise.reject(error);
-    }
-  }
+  getAllQuestionsByTags = async (tags: Tag[]) => {
+    const response = await this.axiosRequest(
+      Method.GET,
+      '/question/all/filterBy/tags',
+      tags,
+    );
 
-  public async getAllTags() {
+    return response.data;
+  };
+
+  getAllQuestionsByOwner = async (ownerID: string) => {
+    const response = await this.axiosRequest(
+      Method.GET,
+      '/question/all/filterBy/owner',
+      ownerID,
+    );
+    return response.data;
+  };
+
+  getAllTags = async () => {
     try {
       const response = await this.axiosRequest(Method.GET, '/tags/all');
       if (response.status !== StatusCode.OK) {
@@ -90,9 +68,9 @@ class MainService extends Api {
     } catch (error) {
       return await Promise.reject(error);
     }
-  }
+  };
 
-  public async createBookmark() {
+  createBookmark = async () => {
     try {
       const response = await this.axiosRequest(Method.POST, '/bookmark/create');
       if (response.status !== StatusCode.OK) {
@@ -102,9 +80,9 @@ class MainService extends Api {
     } catch (error) {
       return await Promise.reject(error);
     }
-  }
+  };
 
-  public async findUser(user: User) {
+  findUser = async (user: User) => {
     try {
       const response = await this.axiosRequest(Method.GET, '/users/me', user);
       if (response.status !== StatusCode.OK) {
@@ -114,9 +92,9 @@ class MainService extends Api {
     } catch (error) {
       return await Promise.reject(error);
     }
-  }
+  };
 
-  public async updateUser(user: User) {
+  updateUser = async (user: User) => {
     try {
       const response = await this.axiosRequest(
         Method.PATCH,
@@ -130,9 +108,9 @@ class MainService extends Api {
     } catch (error) {
       return await Promise.reject(error);
     }
-  }
+  };
 }
 
-const mainService = new MainService('http://localhost:3000', {});
+const mainService = new MainService(env.SERVER_URL, {});
 
 export default mainService;
