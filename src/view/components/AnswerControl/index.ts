@@ -1,1 +1,1 @@
-import {default} from './AnswerControl'
+import {default} from './AnswerControl';
